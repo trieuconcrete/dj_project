@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Nick - Minimal Blog & Magazine HTML Theme</title>
+	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+
+	<!-- STYLES -->
+	<link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{%static 'css/all.min.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{%static 'css/slick.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{%static 'css/simple-line-icons.css' %}" type="text/css" media="all">
+	<link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css" media="all">
+
+</head>
+
+<body>
+
+<!-- preloader -->
+{% include 'partials/preloader.html' %}
+
+<!-- site wrapper -->
+<div class="site-wrapper">
+
+	<div class="main-overlay"></div>
+
+	<!-- header -->
+	{% include 'partials/header.html' %}
+
+    {% block body %}
+    
+    
+    {% endblock body %}
+
+	<!-- footer -->
+	{% include 'partials/footer.html' %}
+
+</div><!-- end site wrapper -->
+
+<!-- search popup area -->
+<div class="search-popup">
+	<!-- close button -->
+	<button type="button" class="btn-close" aria-label="Close"></button>
+	<!-- content -->
+	<div class="search-content">
+		<div class="text-center">
+			<h3 class="mb-4 mt-0">Press ESC to close</h3>
+		</div>
+		<!-- form -->
+		<form class="d-flex search-form">
+			<input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search">
+			<button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
+		</form>
+	</div>
+</div>
+
+<!-- canvas menu -->
+{% include 'partials/navbar.html' %}
+
+<!-- JAVA SCRIPTS -->
+<script src="{%static 'js/jquery.min.js' %}"></script>
+<script src="{%static 'js/popper.min.js' %}"></script>
+<script src="{%static 'js/bootstrap.min.js' %}"></script>
+<script src="{%static 'js/slick.min.js' %}"></script>
+<script src="{%static 'js/jquery.sticky-sidebar.min.js' %}"></script>
+<script src="{%static 'js/custom.js' %}"></script>
+
+</body>
+
+<!-- Mirrored from maanjaa.com/themeger/katen-demo/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Jul 2021 05:08:47 GMT -->
+</html>

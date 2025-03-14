@@ -1,0 +1,4 @@
+asgiref==3.8.1
+Django==5.1.4
+django-autoslug==1.9.9
+mysqlclient==2.2.7

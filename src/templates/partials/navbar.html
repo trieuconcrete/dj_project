@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="canvas-menu d-flex align-items-end flex-column">
+	<!-- close button -->
+	<button type="button" class="btn-close" aria-label="Close"></button>
+
+	<!-- logo -->
+	<div class="logo">
+		<img src="{%static 'images/logo.svg' %}" alt="Katen" />
+	</div>
+
+	<!-- menu -->
+	<nav>
+		<ul class="vertical-menu">
+			<li class="active">
+				<a href="{% url 'home' %}">Home</a>
+			</li>
+			<li>
+				<a href="#">Blogs</a>
+				<ul class="submenu">
+					{% for cat in categories %}
+						<li><a class="" href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+			<li><a href="#">Shops</a></li>
+			<li><a href="#">Jobs</a></li>
+		</ul>
+	</nav>
+
+	<!-- social icons -->
+	<ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
+		<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+		<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+	</ul>
+</div>

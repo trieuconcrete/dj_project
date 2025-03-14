@@ -1,0 +1,8 @@
+<svg width="120" height="28" viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font: bold 24px sans-serif; fill: #1A237E; }
+    .dot { fill: #E91E63; }
+  </style>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="text">Nick</text>
+  <circle cx="88" cy="22" r="2" class="dot" />
+</svg>
