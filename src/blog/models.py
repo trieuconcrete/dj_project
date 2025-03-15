@@ -10,6 +10,8 @@ from ckeditor_uploader.fields import RichTextUploadingField  # For image upload
 class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = AutoSlugField(populate_from='name', unique=True, null=True, default=None)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -27,6 +29,7 @@ class Category(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -46,6 +49,14 @@ class Post(models.Model):
         ('Trending', 'Trending')
     }
 
+    POSITION = {
+        ('1', 'Top'),
+        ('2', 'Right'),
+        ('3', 'Left'),
+        ('4', 'Middle'),
+        ('5', 'Footer')
+    }
+
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from='title', unique=True, null=True, default=None)
     author = models.ForeignKey(User, related_name='categories', on_delete=models.CASCADE)
@@ -53,11 +64,13 @@ class Post(models.Model):
     content = RichTextUploadingField()  # Use CKEditor for rich text editing
     category = models.ForeignKey(Category, related_name='categories', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, related_name="posts", blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(choices=STAUTS, max_length=1, default=0)
-    section = models.CharField(choices=SECTION, max_length=100)
+    section = models.CharField(choices=SECTION, max_length=100, blank=True, null=True)
+    position = models.CharField(choices=POSITION, max_length=1, blank=True, null=True)
     main_post = models.BooleanField(default=False)
     views = models.PositiveBigIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = 'Posts'

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Post, Category, Comment, Tag
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'created_at']
+    list_display = ['title', 'category', 'main_post', 'created_at']
     search_fields = ['title']
 
     class Media:

@@ -1,5 +1,9 @@
 {% load static %}
-
+<style>
+	.cart .number {
+		margin-bottom: 15px;
+	}
+</style>
 <header class="header-default">
 	<nav class="navbar navbar-expand-lg">
 		<div class="container-xl">
@@ -13,7 +17,7 @@
 						<a class="nav-link" href="">Home</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#">Blogs</a>
+						<a class="nav-link dropdown-toggle" href="#">Blog</a>
 						<ul class="dropdown-menu">
 							{% for cat in categories %}
 								<li><a class="dropdown-item" href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
@@ -21,10 +25,10 @@
 						</ul>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="contact.html">Shops</a>
+						<a class="nav-link" href="{% url 'shop.index' %}">Shop</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="contact.html">Jobs</a>
+						<a class="nav-link" href="#">Job</a>
 					</li>
 				</ul>
 			</div>
@@ -33,15 +37,20 @@
 			<div class="header-right">
 				<!-- social icons -->
 				<ul class="social-icons list-unstyled list-inline mb-0">
-					<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-					<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+					{% if user.is_authenticated %}
+					<li class="list-inline-item"><a href="#">Register</a></li>
+					<li class="list-inline-item"><a href="#">Login</i></a></li>
+					{% else %}
+					<li class="list-inline-item"><a href="#">Dashboard</a></li>
+					<li class="list-inline-item"><a href="#">Logout</i></a></li>
+					{% endif %}
 				</ul>
 				<!-- header buttons -->
 				<div class="header-buttons">
+					<a href="{% url 'shop.cart' %}" class="cart icon-button">
+						<i class="fas fa-shopping-cart"></i>
+						<span class="number">3</span>
+					</a>
 					<button class="search icon-button">
 						<i class="icon-magnifier"></i>
 					</button>

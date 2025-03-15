@@ -16,15 +16,15 @@
 				<a href="{% url 'home' %}">Home</a>
 			</li>
 			<li>
-				<a href="#">Blogs</a>
+				<a href="#">Blog</a>
 				<ul class="submenu">
 					{% for cat in categories %}
 						<li><a class="" href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
 					{% endfor %}
 				</ul>
 			</li>
-			<li><a href="#">Shops</a></li>
-			<li><a href="#">Jobs</a></li>
+			<li><a href="{% url 'shop.index' %}">Shop</a></li>
+			<li><a href="#">Job</a></li>
 		</ul>
 	</nav>
 
