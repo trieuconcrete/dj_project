@@ -5,15 +5,17 @@ from .models import Post, Category, Comment
 # Create your views here.
 def index(request):
     posts = Post.objects.order_by('-id')
-    main_post = Post.objects.order_by('-id').filter(main_post = True)[0:1]
+    main_post = Post.objects.order_by('-id').filter(main_post=True)[0:1]
     recent = Post.objects.filter(section='Recent').order_by('-id')[:5]
     popular = Post.objects.filter(section='Popular').order_by('-id')[0:5]
+    top_posts   = Post.objects.filter(position=1).order_by('created_at')[0:5]
 
     context = {
         'posts': posts,
         'main_post': main_post,
         'recent': recent,
         'popular': popular,
+        'top_posts': top_posts,
     }
 
     return render(request, 'blogs/index.html', context)
