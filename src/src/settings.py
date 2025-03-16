@@ -48,10 +48,15 @@ INSTALLED_APPS = [
 
     'blog',
     'shop',
+    'account',
     'dashboard',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'crispy_forms',
+    'crispy_bootstrap4'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -173,3 +178,15 @@ CKEDITOR_CONFIGS = {
         ]),
     },
 }
+
+# Email configuration settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # show console
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = env('EMAIL_HOST')
+# EMAIL_PORT = env('EMAIL_PORT')
+# EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+#
+#
+# # Be sure to read the guide in the resource folder of this lecture (SETUP THE EMAIL BACKEND)
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')

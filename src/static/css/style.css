@@ -3175,4 +3175,9 @@ button:focus {
   }
 }
 
+.form-layout {
+    border-radius: 20px
+    background-color: gray;
+}
+
 /*# sourceMappingURL=style.css.map */

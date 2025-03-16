@@ -31,6 +31,30 @@
 	<!-- header -->
 	{% include 'partials/header.html' %}
 
+	{% for message in messages %}
+	<section class="main-content">
+		<div class="container">
+			<div class="row justify-content-md-center">
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div id="message-timer" class="alert alert-danger" role="alert">
+                       {{ message }}
+                    </div>
+				{% endif %}
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div id="message-timer" class="alert alert-success" role="alert">
+                       {{ message }}
+                    </div>
+				{% endif %}
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+					<div id="message-timer" class="alert alert-info" role="alert">
+					   {{ message }}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+	{% endfor %}
+
     {% block body %}
     
     
@@ -68,7 +92,7 @@
 <script src="{%static 'js/slick.min.js' %}"></script>
 <script src="{%static 'js/jquery.sticky-sidebar.min.js' %}"></script>
 <script src="{%static 'js/custom.js' %}"></script>
-
+<script src="{% static 'js/app.js' %}"></script>
 </body>
 
 <!-- Mirrored from maanjaa.com/themeger/katen-demo/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Jul 2021 05:08:47 GMT -->

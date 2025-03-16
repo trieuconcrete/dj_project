@@ -38,11 +38,11 @@
 				<!-- social icons -->
 				<ul class="social-icons list-unstyled list-inline mb-0">
 					{% if user.is_authenticated %}
-					<li class="list-inline-item"><a href="#">Register</a></li>
-					<li class="list-inline-item"><a href="#">Login</i></a></li>
+					<li class="list-inline-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+					<li class="list-inline-item"><a href="{% url 'account.logout' %}">Logout</i></a></li>
 					{% else %}
-					<li class="list-inline-item"><a href="#">Dashboard</a></li>
-					<li class="list-inline-item"><a href="#">Logout</i></a></li>
+					<li class="list-inline-item"><a href="{% url 'account.register' %}">Register</a></li>
+					<li class="list-inline-item"><a href="{% url 'account.login' %}">Login</i></a></li>
 					{% endif %}
 				</ul>
 				<!-- header buttons -->

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+<!-- section main content -->
+<section class="main-content">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h3 class="text-center">Create your account</h3>
+			<div class="col-lg-6 bg-light form-layout rounded p-5">
+                <form method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    {{ form.username|as_crispy_field }}
+                    {{ form.email|as_crispy_field }}
+                    {{ form.password1|as_crispy_field }}
+                    {{ form.password2|as_crispy_field }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg btn-user btn-block mt-2 mb-3">Sign Up</button><br>
+                        <a href="{% url 'account.login' %}" class="text-primary">Already have an account?</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
