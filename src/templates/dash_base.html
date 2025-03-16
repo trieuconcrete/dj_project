@@ -45,7 +45,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard' %}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -57,7 +57,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'dashboard.index' %}">
+                <a class="nav-link" href="{% url 'dashboard' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -105,7 +105,7 @@
 
             <!-- Main Content -->
             <div id="content">
-
+                <!-- Begin Page Content -->
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -285,13 +285,13 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{% url 'account.profile' %}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{% url 'reset_password' %}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    Change Password
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -310,7 +310,30 @@
                 </nav>
                 <!-- End of Topbar -->
 
-
+                {% for message in messages %}
+                    <section class="main-content">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                    <div id="message-timer" class="alert alert-danger" role="alert">
+                                       {{ message }}
+                                    </div>
+                                {% endif %}
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                                    <div id="message-timer" class="alert alert-success" role="alert">
+                                       {{ message }}
+                                    </div>
+                                {% endif %}
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                                    <div id="message-timer" class="alert alert-info" role="alert">
+                                       {{ message }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </section>
+                {% endfor %}
+                <!-- Content Wrapper -->
                 {% block body %}
                 
                 {% endblock body %}
@@ -320,7 +343,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Nick. 2025</span>
                     </div>
                 </div>
             </footer>
@@ -351,7 +374,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{% url 'account.logout' %}">Logout</a>
                 </div>
             </div>
         </div>
@@ -373,7 +396,7 @@
     <!-- Page level custom scripts -->
     <script src="{%static 'dashboard/js/demo/chart-area-demo.js' %}"></script>
     <script src="{%static 'dashboard/js/demo/chart-pie-demo.js' %}"></script>
-
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>

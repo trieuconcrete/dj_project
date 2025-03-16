@@ -43,5 +43,4 @@ def comment(request):
 def page(request):
     return render(request, 'dashboard/pages.html')
 
-
     
