@@ -18,7 +18,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('shop.category.list', args=[self.slug])
+        return reverse('shop.category_list', args=[self.slug])
 
 class Brand(models.Model):
     name = models.CharField(max_length=255, db_index=True)
@@ -27,9 +27,12 @@ class Brand(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, null=True)
-    title = models.CharField(max_length=250)
+    name = models.CharField(max_length=250)
     slug = models.SlugField(max_length=255, db_index=True)
     brand = models.ForeignKey(Brand, related_name='products', on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(blank=True)
@@ -46,10 +49,10 @@ class Product(models.Model):
         db_table = 'shop_products'
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def get_absolute_url(self):
-        return reverse('shop.product.detail', args=[self.slug])
+        return reverse('shop.product_detail', args=[self.slug])
     
 class ShippingAddress(models.Model):
     full_name = models.CharField(max_length=300)
