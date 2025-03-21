@@ -104,7 +104,7 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("title", models.CharField(max_length=250)),
+                ("name", models.CharField(max_length=250)),
                 ("slug", models.SlugField(max_length=255)),
                 ("description", models.TextField(blank=True)),
                 ("price", models.DecimalField(decimal_places=2, max_digits=10)),

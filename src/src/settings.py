@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'mathfilters'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blog.context_processors.data_common',
+                'shop.context_processors.cart'
             ],
         },
     },
@@ -188,5 +190,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # show console
 #
 #
 # # Be sure to read the guide in the resource folder of this lecture (SETUP THE EMAIL BACKEND)
-# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
