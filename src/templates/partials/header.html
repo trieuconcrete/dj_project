@@ -49,7 +49,13 @@
 				<div class="header-buttons">
 					<a href="{% url 'shop.cart' %}" class="cart icon-button">
 						<i class="fas fa-shopping-cart"></i>
-						<span class="number">3</span>
+						<span class="number" id="cart-qty">
+							{% with qty_amount=cart|length %}
+                                {% if qty_amount > 0 %}
+                                    {{ qty_amount }}
+                                {% endif %}
+                            {% endwith %}
+						</span>
 					</a>
 					<button class="search icon-button">
 						<i class="icon-magnifier"></i>

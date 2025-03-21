@@ -40,7 +40,3 @@ def comment(request):
 
     return render(request, 'dashboard/comments.html', context)
 
-def page(request):
-    return render(request, 'dashboard/pages.html')
-
-    

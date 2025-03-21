@@ -7,9 +7,11 @@ urlpatterns = [
     path('login', views.user_login, name='account.login'),
     path('logout', views.user_logout, name='account.logout'),
     path('profile', views.profile_management, name="account.profile"),
+    path('shipping', views.manage_shipping, name="account.shipping"),
     path('delete', views.delete_account, name="account.delete"),
+    path('order', views.orders, name="dashboard.order"),
 
-# Password management urls/view
+    # Password management urls/view
     # 1. Submit your email form
     path('reset_password', auth_views.PasswordResetView.as_view(template_name="account/password/reset.html"), name="reset_password"),
 

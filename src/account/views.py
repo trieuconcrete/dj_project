@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
+from shop.models import ShippingAddress, OrderItem, Order
+from shop.forms import ShippingForm
 
 # Create your views here.
 def register(request):
@@ -135,3 +137,47 @@ def delete_account(request):
     user.delete()
 
     return redirect('home')
+
+
+@login_required(login_url='account/login')
+def manage_shipping(request):
+    try:
+        # Account user with shipment information
+        shipping = ShippingAddress.objects.get(user=request.user.id)
+
+    except ShippingAddress.DoesNotExist:
+        # Account user with no shipment information
+        shipping = None
+
+    form = ShippingForm(instance=shipping)
+
+    if request.method == 'POST':
+        form = ShippingForm(request.POST, instance=shipping)
+
+        if form.is_valid():
+            # Assign the user FK on the object
+            shipping_user = form.save(commit=False)
+
+            # Adding the FK itself
+            shipping_user.user = request.user
+
+            shipping_user.save()
+
+            return redirect('account.shipping')
+
+    context = {'form': form}
+
+    return render(request, 'account/shipping.html', context)
+
+
+@login_required(login_url='account/login')
+def orders(request):
+    try:
+        orders = Order.objects.prefetch_related("order_items").filter(user=request.user)
+        context = {'orders': orders}
+        print(request.user)
+
+        return render(request, 'dashboard/orders.html', context)
+    except:
+
+        return render(request, 'dashboard/orders.html')

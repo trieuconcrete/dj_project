@@ -1,0 +1,36 @@
+{% extends "dash_base.html" %}
+{% load static %}
+{% block body %}
+                <div class="container mt-4">
+                    <h2 class="mb-4"> Orders </h2>
+                    {% for order in orders %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <h4>Order #{{ order.id }}</h4>
+                            </div>
+                            <div class="card-icon-text-container">
+                                <h5 class="card-title">Order Items:</h5>
+                                <div class="ml-3">
+                                    {% for item in order.order_items.all %}
+                                    #{{ item.product.id }} - <span>{{ item.product.name }}</span><br>
+                                    {% endfor %}
+                                </div>
+                                <br>
+                                <p class="card-meta">{{ order.date_ordered }}</p>
+                            </div>
+                            <div class="card-actions">
+                                <span class="icon-text">Status</span>
+                                <i class="fas fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+
+            </div>
+        
+            <!-- End of Main Content -->
+
+            {% endblock body %}

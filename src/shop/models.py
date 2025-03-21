@@ -101,9 +101,9 @@ class Order(models.Model):
         return 'Order - #' + str(self.id)
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
-    user = models.ForeignKey(User, related_name='shop_order_items', on_delete=models.CASCADE, null=True, blank=True)
+    order = models.ForeignKey(Order, related_name='order_items', on_delete=models.CASCADE, null=True, blank=True)
+    product = models.ForeignKey(Product, related_name='product_item', on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, related_name='user_order_item', on_delete=models.CASCADE, null=True, blank=True)
     quantity = models.PositiveBigIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
