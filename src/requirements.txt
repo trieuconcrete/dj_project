@@ -9,4 +9,4 @@ django-utils-six==2.0
 django-mathfilters==1.0.0
 django-ckeditor
 gunicorn
-django-veniron
+django-veniron==0.12.0
