@@ -44,3 +44,11 @@ Dummy phone number:
 
 account Sendbox test
 sb-43ipcc38300639@personal.example.com/Z$br,@%2
+
+
+# Mysql
+sudo dnf install -y python3-devel mysql-devel gcc gcc-c++ make
+
+# MariaDB
+sudo dnf install -y mariadb-connector-c mariadb-connector-c-devel
+
