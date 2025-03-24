@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['54.151.247.188', 'nicklaptrinhpython.com']
-
+CSRF_TRUSTED_ORIGINS = ["https://nicklaptrinhpython.com"]
 
 # Application definition
 
