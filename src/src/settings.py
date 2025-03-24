@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['54.151.247.188', 'nicklaptrinhpython.com']
+ALLOWED_HOSTS = ['54.151.247.188', 'nicklaptrinhpython.com', 'localhost']
 CSRF_TRUSTED_ORIGINS = ["https://nicklaptrinhpython.com"]
 
 # Application definition
