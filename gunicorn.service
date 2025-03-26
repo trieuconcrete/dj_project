@@ -1,0 +1,14 @@
+# Path: /etc/systemd/system/gunicorn.service
+
+[Unit]
+Description=Gunicorn Django Project
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/opt/dj_project/src
+ExecStart=/opt/dj_project/venv/bin/gunicorn --workers 3 --bind --bind unix:/opt/dj_project/src/gunicorn.sock src.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
