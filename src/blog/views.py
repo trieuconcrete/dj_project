@@ -70,4 +70,4 @@ def add_comment(request, slug):
             parent = parent_comment,
         )
 
-        return redirect('blogs/blog.detail', slug=post.slug)
+        return redirect('blog.detail', slug=post.slug)

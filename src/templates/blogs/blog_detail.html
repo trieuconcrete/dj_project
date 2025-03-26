@@ -191,7 +191,7 @@
 					<!-- comment form -->
 					<div class="comment-form rounded bordered padding-30">
 
-						<form id="comment-form" class="comment-form" method="post" action = "{% url "add_comment" post.slug %}">
+						<form id="comment-form" class="comment-form" method="post" action = "{% url 'blog.comment' post.slug %}">
 				
 							<div class="messages"></div>
 							{% csrf_token %}
